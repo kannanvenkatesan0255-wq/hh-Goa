@@ -1,0 +1,6 @@
+{
+  "name": "HH Goa 2026 — Boarding Pass Generator",
+  "description": "Generate your personalized Hacker House Goa 2026 boarding pass frame with custom photo, name, and boarding date.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

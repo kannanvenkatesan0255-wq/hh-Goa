@@ -50,24 +50,22 @@ export const SharePage: React.FC<SharePageProps> = ({ shareId }) => {
  const handleShareToX = () => {
   if (!data) return;
 
-  // Use the generated share URL.
-  // If it is missing, use the current share page URL.
-  const currentUrl =
+  const shareUrl =
     data.shareUrl ||
     (typeof window !== 'undefined' ? window.location.href : '');
 
-  const tweetText =
+  const caption =
     `✈️ Boarding pass secured for ${data.date}!\n\n` +
     `I'm heading to Hacker House Goa 2026.\n\n` +
     `See you in Goa, ${data.name}!\n\n` +
-    `Check out my official HH Goa 2026 boarding pass:\n` +
-    `${currentUrl}\n\n` +
+    `Check out my HH Goa 2026 boarding pass:\n` +
+    `${shareUrl}\n\n` +
     `#FrameInGoa #HHGoa2026`;
 
-  const twitterUrl =
-    `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+  const tweetUrl =
+    `https://x.com/intent/tweet?text=${encodeURIComponent(caption)}`;
 
-  window.open(twitterUrl, '_blank', 'noopener,noreferrer');
+  window.location.href = tweetUrl;
 };
 
   const handleCopyLink = () => {

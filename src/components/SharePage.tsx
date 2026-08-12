@@ -48,8 +48,9 @@ export const SharePage: React.FC<SharePageProps> = ({ shareId }) => {
   };
 
   const handleShareToX = () => {
-    if (!data) return;
-    const caption = `✈️ Boarding pass secured for ${data.date}!
+  if (!data) return;
+
+  const caption = `✈️ Boarding pass secured for ${data.date}!
 
 I'm heading to Hacker House Goa 2026.
 
@@ -59,9 +60,10 @@ See you in Goa, ${data.name}!
 
 ${data.shareUrl}`;
 
-const tweetUrl = `https://x.com/intent/post?text=${encodeURIComponent(caption)}`;
-    window.open(tweetUrl, '_blank', 'noopener,noreferrer');
-  };
+  const tweetUrl = `https://x.com/intent/post?text=${encodeURIComponent(caption)}`;
+
+  window.open(tweetUrl, '_blank', 'noopener,noreferrer');
+};
 
   const handleCopyLink = () => {
     if (!data) return;

@@ -59,8 +59,7 @@ export const SharePage: React.FC<SharePageProps> = ({ shareId }) => {
     `#FrameInGoa\n\n` +
     `${shareUrl}`;
 
-  const tweetUrl =
-    `https://x.com/intent/post?text=${encodeURIComponent(caption)}`;
+  const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(caption)}`;
 
   window.location.href = tweetUrl;
 };

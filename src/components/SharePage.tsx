@@ -49,10 +49,17 @@ export const SharePage: React.FC<SharePageProps> = ({ shareId }) => {
 
   const handleShareToX = () => {
     if (!data) return;
-    const caption = `✈️ Boarding pass secured for ${data.date}!\n\nI'm heading to Hacker House Goa 2026.\n\nSee you in Goa, ${data.name}!\n\n#FrameInGoa`;
-    const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(
-      caption
-    )}&url=${encodeURIComponent(data.shareUrl)}`;
+    const caption = `✈️ Boarding pass secured for ${data.date}!
+
+I'm heading to Hacker House Goa 2026.
+
+See you in Goa, ${data.name}!
+
+#FrameInGoa
+
+${data.shareUrl}`;
+
+const tweetUrl = `https://x.com/intent/post?text=${encodeURIComponent(caption)}`;
     window.open(tweetUrl, '_blank', 'noopener,noreferrer');
   };
 

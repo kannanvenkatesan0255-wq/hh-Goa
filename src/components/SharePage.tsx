@@ -50,27 +50,38 @@ export const SharePage: React.FC<SharePageProps> = ({ shareId }) => {
  const handleShareToX = () => {
   if (!data) return;
 
-  const shareUrl = data.shareUrl;
+  // Use the generated share URL.
+  // If it is missing, use the current share page URL.
+  const currentUrl =
+    data.shareUrl ||
+    (typeof window !== 'undefined' ? window.location.href : '');
 
-  const caption =
+  const tweetText =
     `✈️ Boarding pass secured for ${data.date}!\n\n` +
     `I'm heading to Hacker House Goa 2026.\n\n` +
     `See you in Goa, ${data.name}!\n\n` +
-    `#FrameInGoa\n\n` +
-    `${shareUrl}`;
+    `Check out my official HH Goa 2026 boarding pass:\n` +
+    `${currentUrl}\n\n` +
+    `#FrameInGoa #HHGoa2026`;
 
-  const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(caption)}`;
+  const twitterUrl =
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
 
-  window.location.href = tweetUrl;
+  window.open(twitterUrl, '_blank', 'noopener,noreferrer');
 };
 
   const handleCopyLink = () => {
-    if (!data) return;
-    navigator.clipboard.writeText(data.shareUrl).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 3000);
-    });
-  };
+  if (!data) return;
+
+  const currentUrl =
+    data.shareUrl ||
+    (typeof window !== 'undefined' ? window.location.href : '');
+
+  navigator.clipboard.writeText(currentUrl).then(() => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  });
+};
 
   const handleGoHome = () => {
     window.location.href = '/';

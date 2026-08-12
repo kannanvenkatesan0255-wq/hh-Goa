@@ -47,22 +47,22 @@ export const SharePage: React.FC<SharePageProps> = ({ shareId }) => {
     document.body.removeChild(link);
   };
 
-  const handleShareToX = () => {
+ const handleShareToX = () => {
   if (!data) return;
 
-  const caption = `✈️ Boarding pass secured for ${data.date}!
+  const shareUrl = data.shareUrl;
 
-I'm heading to Hacker House Goa 2026.
+  const caption =
+    `✈️ Boarding pass secured for ${data.date}!\n\n` +
+    `I'm heading to Hacker House Goa 2026.\n\n` +
+    `See you in Goa, ${data.name}!\n\n` +
+    `#FrameInGoa\n\n` +
+    `${shareUrl}`;
 
-See you in Goa, ${data.name}!
+  const tweetUrl =
+    `https://x.com/intent/post?text=${encodeURIComponent(caption)}`;
 
-#FrameInGoa
-
-${data.shareUrl}`;
-
-  const tweetUrl = `https://x.com/intent/post?text=${encodeURIComponent(caption)}`;
-
-  window.open(tweetUrl, '_blank', 'noopener,noreferrer');
+  window.location.href = tweetUrl;
 };
 
   const handleCopyLink = () => {
